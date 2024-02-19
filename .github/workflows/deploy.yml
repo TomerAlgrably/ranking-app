@@ -38,7 +38,7 @@ jobs:
           username: ${{ secrets.DO_SERVER_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # cd /path/to/your/app
-            pwd
-            npm run start
+            cd /home/tomer/ranking-app
+            git pull
+            npm run build
             # Commands to deploy and start your application (e.g., pm2 start for Node.js app)
