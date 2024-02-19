@@ -20,10 +20,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          # cd frontend
           npm install
-          # cd ../backend
-          # npm install
 
       - name: Build and Deploy Frontend
         run: |
@@ -41,5 +38,6 @@ jobs:
           username: ${{ secrets.DO_SERVER_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /path/to/your/app
+            # cd /path/to/your/app
+            npm run start
             # Commands to deploy and start your application (e.g., pm2 start for Node.js app)
