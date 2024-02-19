@@ -1,0 +1,45 @@
+name: Deploy to DigitalOcean
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Install Dependencies
+        run: |
+          # cd frontend
+          npm install
+          # cd ../backend
+          # npm install
+
+      - name: Build and Deploy Frontend
+        run: |
+          npm run build
+
+      # - name: Deploy Backend
+      #   run: |
+      #     cd ../backend
+      #     # Add any additional build or deployment steps for your backend here
+
+      - name: Deploy to DigitalOcean
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DO_SERVER_IP }}
+          username: ${{ secrets.DO_SERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /path/to/your/app
+            # Commands to deploy and start your application (e.g., pm2 start for Node.js app)
