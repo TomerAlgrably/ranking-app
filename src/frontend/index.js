@@ -1,18 +1,11 @@
-import React from "react";
-import { createRoot } from "react-dom";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+// import './index.css';
 
-import App from "./App.js";
-// import "./styles.scss";
-
-const appRouting = (
-  <Router>
-    <Routes>
-      <Route exact path="/" element={<App />} />
-    </Routes>
-  </Router>
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
 );
-
-const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
-root.render(appRouting);
